@@ -12,18 +12,22 @@ This project implements an **Q-Learning Agent** for Pacman, using value iteratio
   
 ## Prerequisites
 
-- **Python 2.7** (or Python 2.x if applicable)
+- **Python 3** (or Python 3.x if applicable)
 - **Pacman AI Project**: Make sure you have the full Pacman project environment.
   
 ## Running the Agent
 
-To run the **MDPAgent** in the Pacman environment on the **smallGrid** layout for 25 games, follow these steps:
+To run the **QLearnAgent** in the Pacman environment, follow these steps:
 
-1. **Navigate to the Project Directory**: First, ensure you're in the correct directory where the Pacman code is located.
-2. **Run the Agent**: Use the following command:
+1. **Navigate to the Project Directory**: First, ensure you're in the correct directory where the Pacman code is located:
 
 ```bash
 cd pacman-cw2  # Navigate to the directory containing pacman.py
+```
+
+2. **Run the Agent**: Use the following command:
+
+```bash
 python3 pacman.py --pacman QLearnAgent
 ```
 
