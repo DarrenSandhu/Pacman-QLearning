@@ -23,16 +23,13 @@ To run the **MDPAgent** in the Pacman environment on the **smallGrid** layout fo
 2. **Run the Agent**: Use the following command:
 
 ```bash
-cd code  # Navigate to the directory containing pacman.py
-python pacman.py -q -n 25 -p MDPAgent -l smallGrid
+cd pacman-cw2  # Navigate to the directory containing pacman.py
+python3 pacman.py --pacman QLearnAgent
 ```
 
 ### Explanation of Command:
-
-- `-q`: Run in quiet mode (no graphical interface).
-- `-n 25`: Run 25 games.
-- `-p MDPAgent`: Use the MDP-based agent for decision-making.
-- `-l smallGrid`: Use the small grid layout for the Pacman environment.
+- `QLearnAgent`: Use the QLearn-based agent for decision-making.
+- `--pacman`: Instructs pacman.py to search for and execute the specified agent (QLearnAgent in this case) during gameplay.
 
 ## How the MDPAgent Works
 
