@@ -1,6 +1,6 @@
-# Markov Decision Process For Pacman
+# Q-Learning Agent For Pacman
 
-This project implements an **Q-Learning Agent** for Pacman, using value iteration through reinforcement learning to determine the optimal policy for Pacman's actions in the game grid.
+This project implements an **Q-Learning Agent** for Pacman, using value iteration through supervised learning to determine the optimal policy for Pacman's actions in the game grid.
 
 ## Features
 
@@ -28,19 +28,28 @@ cd pacman-cw2  # Navigate to the directory containing pacman.py
 2. **Run the Agent**: Use the following command:
 
 ```bash
-python3 pacman.py --pacman QLearnAgent
+# Run with UI
+python3 pacman.py -p QLearnAgent -x 2000 -n 2010 -l smallGrid 
+
+# Run without UI (quiet mode)
+python3 pacman.py -p QLearnAgent -x 2000 -n 2010 -l smallGrid -q
+
 ```
 
 ### Explanation of Command:
-- `QLearnAgent`: Use the QLearn-based agent for decision-making.
-- `--pacman`: Instructs pacman.py to search for and execute the specified agent (QLearnAgent in this case) during gameplay.
+- `QLearnAgent`: Specifies the Q-Learning-based agent for controlling Pacman’s actions.
+- `-p`: Directs pacman.py to locate and activate the specified agent (in this case, QLearnAgent).
+- `-x`: Specifies the number of training games (in this example, 2000), where the agent learns from its environment without focusing on scoring.
+- `-n`: Indicates the total number of games to run (here, 2010). This allows the agent to use what it learned during the training games in the final 10 games.
+- `-l`: Chooses the grid layout (in this example, smallGrid), which defines the environment Pacman will navigate
+- `-q`: Runs the game in "quiet mode" without the graphical UI, which speeds up the simulation for large-scale training.
 
-## How the MDPAgent Works
+## How the Q-Learning Agent Works
 
-- **State Representation**: Each state represents a unique configuration of Pacman, the ghosts, and the grid.
-- **Rewards and Transitions**: The agent receives rewards based on actions (eating food, avoiding ghosts) and transitions between states according to game rules.
-- **Value Iteration**: The agent iteratively calculates the value of each state to find the optimal policy for maximum reward.
-- **Policy Execution**: After value iteration, the agent follows the policy to make decisions during gameplay.
+- **State Representation**: Each state uniquely represents the configuration of Pacman, the ghosts, the food, and the grid layout. This representation allows the agent to differentiate between scenarios and make decisions based on the environment it perceives at any given time.
+- **Rewards and Transitions**: The agent receives rewards for certain actions, such as eating food or avoiding ghosts, which are vital for learning. Rewards are tied to state-action pairs and guide the agent’s behavior by encouraging beneficial actions. Transitions between states follow game rules, updating the agent’s position based on its chosen actions and adjusting the game environment accordingly.
+- **Q-Value Calculation (Value Iteration)**: The agent calculates the Q-value, or expected future reward, for each state-action pair. Using the Q-learning algorithm, it iteratively updates these Q-values by factoring in immediate rewards and estimating the future rewards from subsequent states. Over time, this enables the agent to converge on optimal Q-values that guide it toward maximum cumulative rewards.
+- **Policy Execution**: With the Q-values derived, the agent follows a policy that selects actions with the highest Q-values in each state. This policy is the agent’s learned strategy, maximizing rewards and ensuring that it makes the best possible decisions based on prior experience.
 
 ## Future Improvements
 
